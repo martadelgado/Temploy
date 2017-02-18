@@ -1,23 +1,29 @@
-const express = require('express');
-const path = require('path');
-const favicon = require('serve-favicon');
-const logger = require('morgan');
-const cookieParser = require('cookie-parser');
-const bodyParser = require('body-parser');
-const expressLayouts = require('express-ejs-layouts');
-const mongoose = require('mongoose');
-const session = require('express-session');
-const passport = require('passport');
-const LocalStrategy = require('passport-local').Strategy;
-const flash = require('connect-flash');
-const MongoStore = require('connect-mongo')(session);
+const express         = require('express');
+const path            = require('path');
+const favicon         = require('serve-favicon');
+const logger          = require('morgan');
+const cookieParser    = require('cookie-parser');
+const bodyParser      = require('body-parser');
+const expressLayouts  = require('express-ejs-layouts');
+const mongoose        = require('mongoose');
+const session         = require('express-session');
+const passport        = require('passport');
+const LocalStrategy   = require('passport-local').Strategy;
+const flash           = require('connect-flash');
+const MongoStore      = require('connect-mongo')(session);
+
 const auth = require('./helpers/auth');
 
-const index = require('./routes/index');
-const users = require('./routes/users');
 
 mongoose.connect('mongodb://localhost:27017/temploy');
 const app = express();
+
+
+const index = require('./routes/index');
+const authController = require('./routes/authController');
+// const users = require('./routes/users');
+
+
 
 
 // view engine setup
@@ -61,9 +67,9 @@ app.use(passport.session());
 auth.passport(passport);
 
 
-
+app.use('/', authController);
 app.use('/', index);
-app.use('/users', users);
+// app.use('/users', users);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
