@@ -1,17 +1,17 @@
-.background-image{
+/*.background-image{
   background-image: url('../images/temploy.jpg');
   background-repeat: no-repeat;
 
   display: block;
   height: 350px;
   background-size: 100%;
-}
+}*/
 
 
 
 body {
   padding: 10px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font: 1.000em "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
 
@@ -20,8 +20,19 @@ a {
 }
 
 
+.first-slide{
+  width:100%;
+}
+
+.logo{
+  width:25%;
+  height: 35px;
+  margin-top: -5px;
+
+}
+
 .navbar {
-  opacity: 0.8;
+  opacity: 0.9;
 
 }
 
@@ -39,7 +50,7 @@ a {
 p{
   font-weight: bold;
   text-align: center;
-  font-size: 30px;
+  font-size: 2.143em;
   font-family: 'Rubik', sans-serif;
 
   color: rgb(255, 255, 255);
@@ -48,12 +59,12 @@ p{
 }
 
 .button-index{
-  width:45%;
-  height: 90px;
-  background-color: rgba(255, 255, 255, 0.9);
-  border-radius: 10px;
+  width:25%;
+  height: 50px;
+  background-color: rgba(56, 209, 211, 0.8);
   border: 2px solid rgba(56, 209, 211, 0.8);
-  font-size: 20px;
+  border-radius: 10px;
+  font-size: 1.429em;
   font-family: 'Rubik', sans-serif;
   box-shadow: 15px 17px 16px #333333;
 }
@@ -66,32 +77,47 @@ p{
 
 .col-md-12{
   background-color: rgba(56, 209, 211, 0.8);
-  /*width: 100%;*/
-  height: 300px;
-  margin-top: 90px;
-}
-
-/*Login*/
-.login{
-  /*margin-top: 170px;*/
+  height: 600px;
+  /*margin-top: 109px;*/
 }
 
 
-/*Sign Up*/
-.signup{
-  /*margin-top: 70px;*/
-}
 
+.btn-primary{
+  height: 30px;
+}
 
 /*Secret*/
 
-/*.avatar  img-responsive{
-  width: 300px;
-  height: 300px;
-}*/
-
-.profile-upload{
-  background-color: rgba(0, 252, 252, 0.6);
-  margin: 0 auto;
+h1{
   text-align: center;
+  color: white;
+  font-size: 3.143em;
+}
+
+
+.panel{
+  color: rgba(7, 56, 71, 1);
+}
+
+.btn{
+  margin-top: 10px;
+  color: white;
+  width:48%;
+  height: 90px;
+  background-color: rgba(255, 255, 255, 0.9);
+  font-size: 1.429em;
+  font-family: 'Rubik', sans-serif;
+  box-shadow: 15px 17px 16px #333333;
+}
+
+.btn-postJob{
+  float: left;
+  margin-right: 18px;
+  background-color: rgba(72, 242, 174, 1);
+}
+
+.btn-requestJob{
+  clear: both;
+  background-color: rgba(7, 56, 71, 1);
 }

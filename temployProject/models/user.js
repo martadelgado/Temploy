@@ -5,6 +5,8 @@ const userSchema = new Schema({
   	username: String,
   	password: String,
     name: String,
+    isTemployee: { type: Boolean, default: false },
+    // fee: { type: Number, default: null }
   	role: {
     	type: String,
     	enum : ['EDITOR', 'ADMIN'],
