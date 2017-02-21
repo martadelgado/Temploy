@@ -7,11 +7,14 @@
   background-size: 100%;
 }*/
 
-
+.carousel-inner img{
+  width:120%;
+}
 
 body {
   padding: 10px;
-  font: 1.000em "Lucida Grande", Helvetica, Arial, sans-serif;
+  background-color: rgba(56, 209, 211, 0.8);
+  font: 1.000em 'Rubik', sans-serif;
 }
 
 
@@ -25,7 +28,7 @@ a {
 }
 
 .logo{
-  width:25%;
+  width:20%;
   height: 35px;
   margin-top: -5px;
 
@@ -51,10 +54,9 @@ p{
   font-weight: bold;
   text-align: center;
   font-size: 2.143em;
-  font-family: 'Rubik', sans-serif;
+  /*font-family: 'Rubik', sans-serif;*/
 
   color: rgb(255, 255, 255);
-  /*background-color: rgb(120, 120, 120);*/
   text-shadow: rgb(3, 3, 3) 4px 3px 3px;
 }
 
@@ -75,11 +77,7 @@ p{
   margin-right: 5px;
 }
 
-.col-md-12{
-  background-color: rgba(56, 209, 211, 0.8);
-  height: 600px;
-  /*margin-top: 109px;*/
-}
+
 
 
 
@@ -98,6 +96,14 @@ h1{
 
 .panel{
   color: rgba(7, 56, 71, 1);
+}
+
+.panel-heading{
+  font-size: 18px;
+}
+
+.panel-body{
+  text-align: center;
 }
 
 .btn{
@@ -120,4 +126,26 @@ h1{
 .btn-requestJob{
   clear: both;
   background-color: rgba(7, 56, 71, 1);
+}
+
+/*Job Form*/
+.btn-block{
+  width:100%;
+  height: 30px;
+}
+
+/*Job Postings*/
+.breadcrumb{
+  width: 100%;
+}
+.col-md-8{
+  margin-top: 5px;
+  background-color: white;
+  height: 3000px;
+  border-radius: 10px;
+  font-size: 20px;
+  }
+
+.listingHeader{
+  text-align: center;
 }

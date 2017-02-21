@@ -5,13 +5,7 @@ const userSchema = new Schema({
   	username: String,
   	password: String,
     name: String,
-    isTemployee: { type: Boolean, default: false },
-    // fee: { type: Number, default: null }
-  	role: {
-    	type: String,
-    	enum : ['EDITOR', 'ADMIN'],
-    	default : 'ADMIN'
-  	}
+    isTemployer: { type: Boolean, default: false },
 	}, {
   	timestamps: { createdAt: "created_at", updatedAt: "updated_at" }
 	}

@@ -11,34 +11,24 @@ const passport        = require('passport');
 const LocalStrategy   = require('passport-local').Strategy;
 const flash           = require('connect-flash');
 const MongoStore      = require('connect-mongo')(session);
-
+const User            = require("./models/user");
+const bcrypt          = require("bcrypt");
+const index          = require('./routes/index');
+const authController = require('./routes/authController');
+const job            = require('./routes/job');
+const users          = require('./routes/users');
 const auth = require('./helpers/auth');
+
 
 
 mongoose.connect('mongodb://localhost:27017/temploy');
 const app = express();
-
-
-const index = require('./routes/index');
-const authController = require('./routes/authController');
-// const users = require('./routes/users');
-
-
-
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 app.set('layout', 'layouts/main');
 app.use(expressLayouts);
-
-
-
-app.use(session({
-  secret: "passport-local-strategy",
-  resave: true,
-  saveUninitialized: true,
-}));
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
@@ -50,7 +40,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 
 // app.use(session({
-//   secret: 'never do your own laundry again',
+//   secret: '',
 //   resave: true,
 //   saveUninitialized: true,
 //   cookie: { maxAge: 60000 },
@@ -60,16 +50,56 @@ app.use(express.static(path.join(__dirname, 'public')));
 //   })
 // }));
 
+app.use(session({
+  secret           : "passport-local-strategy",
+  resave           : true,
+  saveUninitialized: true,
+  cookie           : { maxAge: 60000 }
+}));
+
 app.use(flash());
 
 app.use(passport.initialize());
 app.use(passport.session());
-auth.passport(passport);
+
+passport.serializeUser((user, cb) => {
+    cb(null, user);
+});
+
+passport.deserializeUser((user, cb) => {
+    User.findOne({ "_id": user._id }, (err, user) => {
+      if (err) { return cb(err); }
+      cb(null, user);
+    });
+});
+
+passport.use(new LocalStrategy({
+  passReqToCallback: true
+}, (req, username, password, next) => {
+  User.findOne({ username }, (err, user) => {
+    if (err) {
+      return next(err);
+    }
+    if (!user) {
+      return next(null, false, { message: "Incorrect username" });
+    }
+    if (!bcrypt.compareSync(password, user.password)) {
+      return next(null, false, { message: "Incorrect password" });
+    }
+
+    return next(null, user);
+  });
+}));
+
+
+app.use(auth.setCurrentUser);
 
 
 app.use('/', authController);
 app.use('/', index);
+app.use('/', job);
 // app.use('/users', users);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

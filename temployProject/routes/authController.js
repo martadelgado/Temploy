@@ -3,7 +3,7 @@ const passport = require("passport");
 const bcrypt         = require("bcrypt");
 const User           = require("../models/user");
 
-var router = express.Router();
+const router = express.Router();
 const bcryptSalt     = 10;
 
 /* GET users listing. */
@@ -65,7 +65,11 @@ router.post("/login", passport.authenticate("local", {
 
 router.get("/logout", (req, res) => {
   req.logout();
-  res.redirect("/");
+  delete res.locals.currentUser;
+  delete req.session.passport;
+  // delete currentUser and passport properties
+  // becasuse when we calling req.logout() is leaving an empty object inside both properties.
+  res.redirect('/');
 });
 
 module.exports = router;

@@ -1,0 +1,30 @@
+<ol class="breadcrumb">
+<li><a href="#">Home</a></li>
+<li><a href="/secret">Dashboard</a></li>
+<li class="active">Listings</li>
+</ol>
+  <div class="container-fluid">
+    <div class="col-md-8 col-md-offset-2" >
+      <div class = "listingHeader">
+        <h2> Job Listings </h2>
+      </div>
+          <ul>
+            <% jobs.forEach((jobList) => { %>
+                <li> <strong> Title: </strong> <%= jobList.jobTitle%> </li>
+                <li> Category: <%= jobList.jobCategory%> </li>
+                <li> Deadline: <%= jobList.jobDeadline%> </li>
+                <li> Description: <%= jobList.jobDescription %> </li>
+                <li> user: <%= jobList.user.username %> </li>
+                <form action="/jobpostings/<%= jobList._id %>">
+                  <button class="requestJob" name="request-button">Request </button>
+                </form> <br>
+
+            <% }) %>
+
+          </ul>
+
+      </div>
+      </div>
+
+
+  </div>
