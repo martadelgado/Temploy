@@ -18,13 +18,18 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="/signup">Signup</a></li>
-        <li><a href="/login">Login</a></li>
-        <li><a href="/logout">Logout</a></li>
+        <% if (isUserLoggedIn) { %>
+          <p class="navbar-text">Signed in as <%= currentUser.name %></p>
+          <li><a href="/logout">Logout</a></li>
+        <% } else { %>
+          <li><a href="/signup">Signup</a></li>
+          <li><a href="/login">Login</a></li>
+
+        <% } %>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="/secret">Dashboard</a></li>
+            <li><a href="/dashboard">Dashboard</a></li>
             <li><a href="/admin">Admin</a></li>
           </ul>
         </li>

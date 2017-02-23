@@ -17,7 +17,9 @@ const index          = require('./routes/index');
 const authController = require('./routes/authController');
 const job            = require('./routes/job');
 const users          = require('./routes/users');
-const auth = require('./helpers/auth');
+const auth           = require('./helpers/auth');
+
+
 
 
 
@@ -98,6 +100,7 @@ app.use(auth.setCurrentUser);
 app.use('/', authController);
 app.use('/', index);
 app.use('/', job);
+
 // app.use('/users', users);
 
 

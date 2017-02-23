@@ -17,6 +17,8 @@
     "express": "^4.14.1",
     "express-ejs-layouts": "^2.2.0",
     "express-session": "^1.15.1",
+    "jQuery": "^1.7.4",
+    "jsdom": "^9.11.0",
     "mongodb": "^2.2.24",
     "mongoose": "^4.8.3",
     "morgan": "^1.7.0",

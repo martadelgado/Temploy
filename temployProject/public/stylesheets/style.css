@@ -7,6 +7,17 @@
   background-size: 100%;
 }*/
 
+body{padding-top:30px;}
+
+.glyphicon {  margin-bottom: 10px;margin-right: 10px;}
+
+small {
+display: block;
+line-height: 1.428571429;
+color: #999;
+}
+
+
 .carousel-inner img{
   width:120%;
 }
@@ -50,15 +61,15 @@ a {
 
 
 
-p{
+/*p{
   font-weight: bold;
   text-align: center;
-  font-size: 2.143em;
+  font-size: 2.143em;*/
   /*font-family: 'Rubik', sans-serif;*/
 
-  color: rgb(255, 255, 255);
-  text-shadow: rgb(3, 3, 3) 4px 3px 3px;
-}
+  /*color: rgb(255, 255, 255);
+  text-shadow: rgb(3, 3, 3) 4px 3px 3px;*/
+/*}*/
 
 .button-index{
   width:25%;
@@ -82,10 +93,10 @@ p{
 
 
 .btn-primary{
-  height: 30px;
+  height: 20px;
 }
 
-/*Secret*/
+/*Dashboard*/
 
 h1{
   text-align: center;
@@ -93,6 +104,9 @@ h1{
   font-size: 3.143em;
 }
 
+li{
+  list-style: none;
+}
 
 .panel{
   color: rgba(7, 56, 71, 1);
@@ -104,6 +118,14 @@ h1{
 
 .panel-body{
   text-align: center;
+  font-size: 16px;
+}
+
+
+span{
+  margin-right: 10px;
+  font-weight: bolder;
+  text-decoration: underline;
 }
 
 .btn{
@@ -128,6 +150,14 @@ h1{
   background-color: rgba(7, 56, 71, 1);
 }
 
+.link {
+  font-size: 10px;
+}
+
+table{
+  text-align: left;
+}
+
 /*Job Form*/
 .btn-block{
   width:100%;
@@ -141,11 +171,16 @@ h1{
 .col-md-8{
   margin-top: 5px;
   background-color: white;
-  height: 3000px;
   border-radius: 10px;
   font-size: 20px;
   }
 
+.jobpostings{
+  height: 700px;
+}
+
 .listingHeader{
   text-align: center;
 }
+
+/*Job Profile*/

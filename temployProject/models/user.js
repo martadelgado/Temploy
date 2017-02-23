@@ -5,6 +5,8 @@ const userSchema = new Schema({
   	username: String,
   	password: String,
     name: String,
+    lastName: String,
+    dateOfBirth: Date,
     isTemployer: { type: Boolean, default: false },
 	}, {
   	timestamps: { createdAt: "created_at", updatedAt: "updated_at" }

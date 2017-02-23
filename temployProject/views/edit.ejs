@@ -3,26 +3,29 @@
     <div class="panel-heading">Post a Job</div>
     <div class ="col-md-6 col-md-offset-3">
     <div class="panel-body" >
-          <form action="/jobform" method="POST">
+          <form action="/jobpostings/<%= job._id %>" method="POST">
+
             <div class="form-group">
               <label for="jobTitle">Job Title</label>
-              <input type="text" class="form-control" id="jobTitle" name="jobTitle">
+              <input type="text" class="form-control" id="jobTitle" name="jobTitle" value= <%= jobTitle %>   >
             </div>
             <div class="form-group">
               <label for="jobCategory"> Category </label>
-              <input type="text" class="form-control" id="jobCategory" name="jobCategory">
+              <input type="text" class="form-control" id="jobCategory" name="jobCategory" value = <%= jobCategory %> >
             </div>
             <div class="form-group">
               <label for="jobDescription">Job Description</label>
-              <input name="text" class="form-control" id="jobDescription" name="jobDescription" >
+              <input type="text" class="form-control" id="jobDescription" name="jobDescription" value = <%= jobDescription %> >
             </div>
               <div class="form-group">
                 <label for="jobDeadline">Deadline</label>
-                <input type="date" class="form-control" id="jobDeadline" name="jobDeadline">
+                <input type="date" class="form-control" id="jobDeadline" name="jobDeadline" value = <%= jobDeadline %> >
               </div>
               <div class="form-group">
-        <button type="submit" class="btn btn-primary btn-block">Update Job</button>
-      </form>
+
+
+                  <button type="update" class="btn-primary btn-block">Update Job</button>
+
   </div>
   </div>
 </div>

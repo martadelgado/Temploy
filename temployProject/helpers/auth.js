@@ -29,12 +29,12 @@ module.exports = {
 	setCurrentUser: (req, res, next)=>{
 
 		if (req.session.passport) {
-	    res.locals.currentUser = req.session.passport.user._id;
+	    res.locals.currentUser = req.session.passport.user;
 	    res.locals.isUserLoggedIn = true;
 
 	  } else {
 	    res.locals.isUserLoggedIn = false;
-			
+
 	  }
 	  next();
 	}

@@ -1,0 +1,97 @@
+<div class="secret">
+<h1>Welcome <%= user.name %> ! </h1>
+<div class="container-fluid">
+  <div class="row">
+        <div class="col-xs-12  col-md-6 col-md-offset-3" >
+            <div class="well well-sm">
+                <div class="row">
+                    <div class="col-sm-6 col-md-4">
+                        <img src="http://placehold.it/380x500" alt="" class="img-rounded img-responsive" />
+                    </div>
+                    <div class="col-sm-6 col-md-8  ">
+                        <h4>
+                            <%= user.name %> <%= user.lastName %> </h4>
+                        <%# <small><cite title="San Francisco, USA">San Francisco, USA <i class="glyphicon glyphicon-map-marker">
+                        </i></cite></small>%>
+                        <p>
+                            <i class="glyphicon glyphicon-envelope"></i><%= user.username %>
+                            <br />
+                            <i class="glyphicon glyphicon-globe"></i><a href=""></a>
+                            <br />
+                            <i class="glyphicon glyphicon-gift"></i><%= user.dateOfBirth %></p>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+  <div class="col-md-6 col-md-offset-3" >
+    <div class="panel panel-default">
+      <div class="panel-heading">Jobs You Posted: </div>
+      <div class="panel-body">
+        <div class="table-responsive">
+           <table class="table">
+             <thead>
+               <tr>
+                 <th>Job Title</th>
+                 <th>User</th>
+                 <th>Deadline</th>
+               </tr>
+             </thead>
+             <tbody>
+               <% job.forEach((oneJob) => { %>
+
+               <tr>
+                 <td><%= oneJob.jobTitle %></td>
+                 <td><%= oneJob.user.name %></td>
+                 <td><%= oneJob.jobDeadline %></td>
+                 <td> <a class = "link" href="/jobpostings/<%= oneJob._id %>/delete">Delete </a></td>
+                 <td><a class = "link" href="/jobpostings/<%= oneJob._id %>/edit">Edit</a></td>
+               </tr>
+               <% }) %>
+             </tbody>
+           </table>
+         </div>
+      </div>
+    </div>
+    <div class="panel panel-default">
+      <div class="panel-heading">Jobs You Applied For: </div>
+      <div class="panel-body" id="pending-jobs">
+        <div class="table-responsive">
+           <table class="table">
+             <thead>
+               <tr>
+                 <th>Job Title</th>
+                 <th>Temployer</th>
+                 <th>Deadline</th>
+               </tr>
+             </thead>
+             <tbody>
+               <% applications.forEach((application) => { %>
+
+               <tr>
+                 <td><%= application.job.jobTitle %></td>
+                 <td><%= application.job.user %></td>
+                 <td><%= application.job.jobDeadline %></td>
+
+               </tr>
+               <% }) %>
+             </tbody>
+           </table>
+       </div>
+      </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+  <div class="col-md-6 col-md-offset-3 " >
+    <form action="/jobform">
+      <button class="btn btn-postJob" name="post-button" >Post a Job</button>
+    </form>
+    <form action="/job/jobpostings">
+      <button class="btn btn-requestJob" name="request-button">Request a Job</button>
+    </form>
+  </div>
+  </div>
+</code></pre>
+</div>
