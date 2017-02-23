@@ -3,23 +3,23 @@
     <div class="panel-heading">Post a Job</div>
     <div class ="col-md-6 col-md-offset-3">
     <div class="panel-body" >
-          <form action="/jobpostings/<%= job._id %>" method="POST">
+          <form action="/jobpostings/<%= job._id %>/edit" method="POST">
 
             <div class="form-group">
               <label for="jobTitle">Job Title</label>
-              <input type="text" class="form-control" id="jobTitle" name="jobTitle" value= <%= jobTitle %>   >
+              <input type="text" class="form-control" id="jobTitle" name="jobTitle" value= <%= job.jobTitle %>   >
             </div>
             <div class="form-group">
               <label for="jobCategory"> Category </label>
-              <input type="text" class="form-control" id="jobCategory" name="jobCategory" value = <%= jobCategory %> >
+              <input type="text" class="form-control" id="jobCategory" name="jobCategory" value = <%= job.jobCategory %> >
             </div>
             <div class="form-group">
               <label for="jobDescription">Job Description</label>
-              <input type="text" class="form-control" id="jobDescription" name="jobDescription" value = <%= jobDescription %> >
+              <input type="text" class="form-control" id="jobDescription" name="jobDescription" value = <%= job.jobDescription %> >
             </div>
               <div class="form-group">
                 <label for="jobDeadline">Deadline</label>
-                <input type="date" class="form-control" id="jobDeadline" name="jobDeadline" value = <%= jobDeadline %> >
+                <input type="date" class="form-control" id="jobDeadline" name="jobDeadline" value = <%= job.jobDeadline %> >
               </div>
               <div class="form-group">
 

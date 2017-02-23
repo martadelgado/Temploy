@@ -5,10 +5,11 @@ const Job = require('../models/job');
 var auth = require('../helpers/auth');
 
 
+
 router.get('/job/jobpostings', function(req, res, next) {
 
   Job.find({})
-    .populate("user", "username")
+    .populate("user")
     .exec((err, jobs)=>{
       if(err){
         next(err);
@@ -35,28 +36,22 @@ router.get('/jobpostings/:id', (req, res, next) => {
 });
 
 router.get('/jobpostings/:id/edit', (req, res, next) => {
+
   let jobId = req.params.id;
 
   Job.findById(jobId, (err, job)=>{
     if (err) {
       next(err);
     } else {
-      res.render('edit', job);
+      res.render('edit', {job});
     }
   });
 });
 
 
 
-router.post('/jobpostings/:id', (req, res, next) => {
+router.post('/jobpostings/:id/edit', (req, res, next) => {
   let jobId = req.params.id;
-  let jobDetails = {
-    user: req.session.currentUser,
-    jobTitle: req.body.jobTitle,
-    jobCategory: req.body.jobCategory,
-    jobDescription: req.body.jobDescription,
-    jobDeadline: req.body.jobDeadline,
-  };
 
   const jobToUpdate = {
     jobTitle: req.body.jobTitle,

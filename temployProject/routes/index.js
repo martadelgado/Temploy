@@ -12,21 +12,11 @@ const Application = require('../models/application');
 router.get('/', function(req, res, next) {
   res.render('index', { title: '' });
 });
-router.get('/thor',  (req, res, next)=>{
-  res.render('thor', { user: res.locals.currentUser});
-});
-
-
-
-
 
 
 router.post('/dashboard', auth.checkLoggedIn('You must be logged in', '/login'), (req, res, next) => {
   Job.findById(req.body.id, (err, job)=>{
     if (job.user.toString() === res.locals.currentUser._id ){
-      // $("#myBtn").click(function(){
-      //     $("#myModal").modal();
-      // });
 
       res.send("you cant apply!");
 
@@ -45,10 +35,11 @@ router.post('/dashboard', auth.checkLoggedIn('You must be logged in', '/login'),
     }
   });
 });
+
 router.get('/dashboard', auth.checkLoggedIn('You must be logged in', '/login'), function(req, res, next) {
   Job.find({user: req.user._id})
-    .populate("user", "username")
-    .populate("temployer", "username")
+    .populate("user")
+    .populate("temployer")
     .exec((err,jobs)=>{
       if (err) {
         next(err);
@@ -56,7 +47,13 @@ router.get('/dashboard', auth.checkLoggedIn('You must be logged in', '/login'), 
       } else {
         Application.find({user: req.user._id})
           .populate("user")
-          .populate("job")
+          .populate({
+            path: 'job',
+            populate:{
+              path: 'user',
+              model: 'User'
+            }
+          })
           .exec((err, applications)=>{
             if(err){
               next(err);

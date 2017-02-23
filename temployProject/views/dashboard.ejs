@@ -29,25 +29,24 @@
       <div class="panel-heading">Jobs You Posted: </div>
       <div class="panel-body">
         <div class="table-responsive">
-           <table class="table">
-             <thead>
-               <tr>
-                 <th>Job Title</th>
-                 <th>User</th>
-                 <th>Deadline</th>
-               </tr>
-             </thead>
-             <tbody>
-               <% job.forEach((oneJob) => { %>
-
-               <tr>
-                 <td><%= oneJob.jobTitle %></td>
-                 <td><%= oneJob.user.name %></td>
-                 <td><%= oneJob.jobDeadline %></td>
-                 <td> <a class = "link" href="/jobpostings/<%= oneJob._id %>/delete">Delete </a></td>
-                 <td><a class = "link" href="/jobpostings/<%= oneJob._id %>/edit">Edit</a></td>
-               </tr>
-               <% }) %>
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Job Title</th>
+                <th>Temployer</th>
+                <th>Deadline</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% job.forEach((oneJob) => { %>
+              <tr>
+                <td><%= oneJob.jobTitle %></td>
+                <td><%= oneJob.user.name %></td>
+                <td><%= oneJob.jobDeadline.toDateString() %></td>
+                <td> <a class = "link" href="/jobpostings/<%= oneJob._id %>/delete">Delete </a></td>
+                <td><a class = "link" href="/jobpostings/<%= oneJob._id %>/edit">Edit</a></td>
+              </tr>
+              <% }) %>
              </tbody>
            </table>
          </div>
@@ -66,16 +65,14 @@
                </tr>
              </thead>
              <tbody>
-               <% applications.forEach((application) => { %>
-
-               <tr>
-                 <td><%= application.job.jobTitle %></td>
-                 <td><%= application.job.user %></td>
-                 <td><%= application.job.jobDeadline %></td>
-
-               </tr>
-               <% }) %>
-             </tbody>
+                <% applications.forEach((application) => { %>
+                <tr>
+                  <td><%= application.job.jobTitle %></td>
+                  <td><%= application.job.user.name %></td>
+                  <td><%= application.job.jobDeadline.toDateString() %></td>
+                </tr>
+                <% }) %>
+              </tbody>
            </table>
        </div>
       </div>
