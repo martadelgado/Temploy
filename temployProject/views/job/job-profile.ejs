@@ -13,11 +13,11 @@
       <ul id="appliedJob" data="<%= jobs._id %>">
             <li> Title: <%= jobs.jobTitle %> </li>
             <li>  Category: <%= jobs.jobCategory %> </li>
-            <li>  Deadline: <%= jobs.jobDeadline %> </li>
+            <li>  Deadline: <%= jobs.jobDeadline.toDateString() %> </li>
             <li>  Description: <%= jobs.jobDescription %> </li>
             <li>  Temployer: <%= jobs.user.name %> </li>
       </ul>
-      
+
 
     <form id="applyNow" action="/dashboard"  method="post">
       <button type="submit" id="applyNow" name="id" value=<%=jobs._id%>> Apply Now! </button>
@@ -31,3 +31,4 @@
       </a>
     </div>
     </div>
+  

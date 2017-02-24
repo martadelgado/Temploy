@@ -8,7 +8,7 @@ const jobSchema = new Schema({
     jobCategory: String,
     jobDeadline: Date,
     user: { type: Schema.Types.ObjectId, ref: 'User' },
-    temployer: { type: Schema.Types.ObjectId, ref: 'User' }
+    temployer: { type: Schema.Types.ObjectId, ref: 'User' },
 });
     jobSchema.set('timestamps', true);
 

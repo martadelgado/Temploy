@@ -8,23 +8,34 @@
       <div class = "listingHeader">
         <h2> Job Listings </h2>
       </div>
-          <ul>
-            <% jobs.forEach((jobList) => { %>
-                <li> Title: <%= jobList.jobTitle%> </li>
-                <li> Category: <%= jobList.jobCategory%> </li>
-                <li> Deadline: <%= jobList.jobDeadline%> </li>
-                <li> Description: <%= jobList.jobDescription %> </li>
-                <li> Posted by: <%= jobList.user.name %> </li>
-                <form action="/jobpostings/<%= jobList._id %>">
-                  <button class="requestJob" name="request-button">Request </button>
-                </form> <br>
+      <div class="panel panel-default">
 
-            <% }) %>
+        <div class="panel-body">
+          <div class="table-responsive">
+            <table class="table" class="tableListing">
 
-          </ul>
+              <tbody>
+                <% jobs.forEach((jobList) => { %>
+                <tr>
+                  <td>
+                      <li> Title: <%= jobList.jobTitle%> </li>
+                      <li> Category: <%= jobList.jobCategory%> </li>
+                      <li> Deadline: <%= jobList.jobDeadline.toDateString()%> </li>
+                      <li> Description: <%= jobList.jobDescription %> </li>
+                      <li> Posted by: <%= jobList.user.name %> </li>
+                      <form action="/jobpostings/<%= jobList._id %>">
+                        <button class="requestJob" name="request-button">Request </button>
+                      </form> <br>
+                  </td>
+                </tr>
+                <% }) %>
+               </tbody>
+             </table>
+           </div>
+        </div>
+      </div>
+
+
 
       </div>
       </div>
-
-
-  </div>

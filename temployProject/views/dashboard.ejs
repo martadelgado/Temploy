@@ -1,22 +1,33 @@
 <div class="secret">
 <h1>Welcome <%= user.name %> ! </h1>
 <div class="container-fluid">
+  <% pictures.forEach(function(picture) { %>
+   <h3><%= picture.name %></h3>
+   <img class="img-circle" src="<%= picture.pic_path %>" alt="<%= picture.pic_name %>" width="140" height="140" value="<%= picture._id%>"/>
+   <% })%>
+
   <div class="row">
+
+      <h4>  <%= user.name %> <%= user.lastName %> </h4>
+      <form action="/dashboard/<%= user._id %>/edit" method="GET">
+      <button type="submit"> Edit Your Profile </button>
+      </form>
         <div class="col-xs-12  col-md-6 col-md-offset-3" >
+
             <div class="well well-sm">
                 <div class="row">
                     <div class="col-sm-6 col-md-4">
-                        <img src="http://placehold.it/380x500" alt="" class="img-rounded img-responsive" />
+
                     </div>
+
                     <div class="col-sm-6 col-md-8  ">
-                        <h4>
-                            <%= user.name %> <%= user.lastName %> </h4>
+
+
                         <%# <small><cite title="San Francisco, USA">San Francisco, USA <i class="glyphicon glyphicon-map-marker">
                         </i></cite></small>%>
                         <p>
                             <i class="glyphicon glyphicon-envelope"></i><%= user.username %>
                             <br />
-                            <i class="glyphicon glyphicon-globe"></i><a href=""></a>
                             <br />
                             <i class="glyphicon glyphicon-gift"></i><%= user.dateOfBirth %></p>
 
@@ -33,14 +44,14 @@
             <thead>
               <tr>
                 <th>Job Title</th>
-                <th>Temployer</th>
+                <th>Applicant</th>
                 <th>Deadline</th>
               </tr>
             </thead>
             <tbody>
               <% job.forEach((oneJob) => { %>
               <tr>
-                <td><%= oneJob.jobTitle %></td>
+                <td><a href="/jobpostings/<%= oneJob._id %>/"><%=oneJob.jobTitle %> </a> </td>
                 <td><%= oneJob.user.name %></td>
                 <td><%= oneJob.jobDeadline.toDateString() %></td>
                 <td> <a class = "link" href="/jobpostings/<%= oneJob._id %>/delete">Delete </a></td>
@@ -67,9 +78,10 @@
              <tbody>
                 <% applications.forEach((application) => { %>
                 <tr>
-                  <td><%= application.job.jobTitle %></td>
+                  <td><a href="/jobpostings/<%= application.job._id %>/"><%= application.job.jobTitle %> </a></td>
                   <td><%= application.job.user.name %></td>
                   <td><%= application.job.jobDeadline.toDateString() %></td>
+                  <td> <a class = "link" href="/application/<%= application._id %>/delete">Delete </a></td>
                 </tr>
                 <% }) %>
               </tbody>
@@ -77,16 +89,18 @@
        </div>
       </div>
 
+
+
       </div>
     </div>
   </div>
 </div>
   <div class="col-md-6 col-md-offset-3 " >
     <form action="/jobform">
-      <button class="btn btn-postJob" name="post-button" >Post a Job</button>
+      <button class="btn dashboard-btn btn-postJob" name="post-button" >Post a Job</button>
     </form>
     <form action="/job/jobpostings">
-      <button class="btn btn-requestJob" name="request-button">Request a Job</button>
+      <button class="btn dashboard-btn btn-requestJob" name="request-button">Request a Job</button>
     </form>
   </div>
   </div>

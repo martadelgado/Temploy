@@ -14,7 +14,9 @@ router.get('/signup', function(req, res, next) {
 router.post("/signup", (req, res, next) => {
   var username = req.body.username;
   var name     = req.body.name;
+  var lastName = req.body.lastName;
   var password = req.body.password;
+  var dateOfBirth = req.body.dateOfBirth;
 
 
   if (username === "" || password === "") {
@@ -33,9 +35,11 @@ router.post("/signup", (req, res, next) => {
     var salt     = bcrypt.genSaltSync(bcryptSalt);
     var hashPass = bcrypt.hashSync(password, salt);
 
-    var newUser = User({
+    var newUser = new User({
       username,
       name,
+      lastName,
+      dateOfBirth,
       password: hashPass
     });
 

@@ -98,7 +98,9 @@ router.post('/jobform', auth.checkLoggedIn('You must be logged in', '/login'), (
     jobCategory: req.body.jobCategory,
     jobDescription: req.body.jobDescription,
     jobDeadline: req.body.jobDeadline,
-    user: res.locals.currentUser._id
+    user: res.locals.currentUser._id,
+    temployer: req.body.temployerId,
+
   };
   const newJob = new Job(addJob);
 

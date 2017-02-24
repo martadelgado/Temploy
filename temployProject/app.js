@@ -101,7 +101,7 @@ app.use('/', authController);
 app.use('/', index);
 app.use('/', job);
 
-// app.use('/users', users);
+app.use('/', users);
 
 
 // catch 404 and forward to error handler
