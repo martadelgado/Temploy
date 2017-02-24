@@ -1,5 +1,5 @@
 <ol class="breadcrumb">
-<li><a href="#">Home</a></li>
+<li><a href="/">Home</a></li>
 <li><a href="/dashboard">Dashboard</a></li>
 <li class="active">Listings</li>
 </ol>
@@ -22,9 +22,9 @@
                       <li> Category: <%= jobList.jobCategory%> </li>
                       <li> Deadline: <%= jobList.jobDeadline.toDateString()%> </li>
                       <li> Description: <%= jobList.jobDescription %> </li>
-                      <li> Posted by: <%= jobList.user.name %> </li>
+
                       <form action="/jobpostings/<%= jobList._id %>">
-                        <button class="requestJob" name="request-button">Request </button>
+                        <button  class="btn btn-info"  name="request-button">Request </button>
                       </form> <br>
                   </td>
                 </tr>

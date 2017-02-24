@@ -12,11 +12,21 @@
               <label for="passwordInput">Password</label>
               <input type="password" class="form-control" id="password" placeholder="Password" name="password">
             </div>
+
+
+
           <% if ( message != "" ) { %>
             <div class="alert alert-danger" role="alert"><%= message %></div>
           <% } %>
         <button type="submit" class="btn-primary btn-block">Login</button>
       </form>
+    </div>
+    <div>
+    Don't have an account yet?
+      <a href="/signup">
+        Sign up!
+      </a>
+    </div>
+    </div>
   </div>
   </div>
-</div>

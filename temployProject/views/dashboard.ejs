@@ -1,23 +1,20 @@
 <div class="secret">
-<h1>Welcome <%= user.name %> ! </h1>
+<h1 class="welcome">Welcome <%= user.name %>! </h1>
 <div class="container-fluid">
-  <% pictures.forEach(function(picture) { %>
-   <h3><%= picture.name %></h3>
-   <img class="img-circle" src="<%= picture.pic_path %>" alt="<%= picture.pic_name %>" width="140" height="140" value="<%= picture._id%>"/>
-   <% })%>
 
   <div class="row">
 
-      <h4>  <%= user.name %> <%= user.lastName %> </h4>
-      <form action="/dashboard/<%= user._id %>/edit" method="GET">
-      <button type="submit"> Edit Your Profile </button>
-      </form>
+
+
         <div class="col-xs-12  col-md-6 col-md-offset-3" >
 
             <div class="well well-sm">
-                <div class="row">
+                <div class="row" id="picture">
                     <div class="col-sm-6 col-md-4">
-
+                      <% pictures.forEach(function(picture) { %>
+                       <h3><%= picture.name %></h3>
+                       <img class="img-circle" src="<%= picture.pic_path %>" alt="<%= picture.pic_name %>" width="140" height="140" value="<%= picture._id%>"/>
+                       <% })%>
                     </div>
 
                     <div class="col-sm-6 col-md-8  ">
@@ -26,10 +23,16 @@
                         <%# <small><cite title="San Francisco, USA">San Francisco, USA <i class="glyphicon glyphicon-map-marker">
                         </i></cite></small>%>
                         <p>
+                            Name: <%= user.name %>
+                            <%= user.lastName %> <br> <br>
+                            Date of Birth: <%= user.dateOfBirth.toDateString() %>
+                            <br />
+                            <br />
                             <i class="glyphicon glyphicon-envelope"></i><%= user.username %>
-                            <br />
-                            <br />
-                            <i class="glyphicon glyphicon-gift"></i><%= user.dateOfBirth %></p>
+                            <br>
+                            <a id="editProfile" href="/dashboard/<%= user._id %>/edit">
+                              Edit profile
+                            </a>
 
                     </div>
                 </div>
@@ -44,16 +47,16 @@
             <thead>
               <tr>
                 <th>Job Title</th>
-                <th>Applicant</th>
                 <th>Deadline</th>
+                <th>Category</th>
               </tr>
             </thead>
             <tbody>
               <% job.forEach((oneJob) => { %>
               <tr>
                 <td><a href="/jobpostings/<%= oneJob._id %>/"><%=oneJob.jobTitle %> </a> </td>
-                <td><%= oneJob.user.name %></td>
                 <td><%= oneJob.jobDeadline.toDateString() %></td>
+                <td><%= oneJob.jobCategory %></td>
                 <td> <a class = "link" href="/jobpostings/<%= oneJob._id %>/delete">Delete </a></td>
                 <td><a class = "link" href="/jobpostings/<%= oneJob._id %>/edit">Edit</a></td>
               </tr>
@@ -90,14 +93,13 @@
       </div>
 
 
-
       </div>
     </div>
   </div>
 </div>
   <div class="col-md-6 col-md-offset-3 " >
     <form action="/jobform">
-      <button class="btn dashboard-btn btn-postJob" name="post-button" >Post a Job</button>
+      <button class="btn dashboard-btn btn-postJob-dash" name="post-button" >Post a Job</button>
     </form>
     <form action="/job/jobpostings">
       <button class="btn dashboard-btn btn-requestJob" name="request-button">Request a Job</button>

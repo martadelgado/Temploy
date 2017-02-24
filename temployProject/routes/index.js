@@ -48,34 +48,38 @@ router.post('/dashboard', auth.checkLoggedIn('You must be logged in', '/login'),
 
 
 
-
 router.get('/dashboard', auth.checkLoggedIn('You must be logged in', '/login'), function(req, res, next) {
-
   Job.find({user: req.user._id})
-    .populate("user")
-    .populate("temployer")
+    .populate("user", "username")
+    .populate("temployer", "username")
     .exec((err,jobs)=>{
       if (err) {
         next(err);
         return;
       } else {
-        Application.find({user: req.user._id})
-          .populate("user", "name")
-          .populate({
-            path: 'job',
-            populate:{
-              path: 'user',
-              model: 'User'
-            }
-          })
-          .exec((err, applications)=>{
-            if(err){
-              next(err);
+        Picture.find({user: req.user._id}, (err, pictures) => {
+          if(err){
+            next(err);
+            return;
       } else {
-        res.render('dashboard', {user: req.user, job: jobs, applications: applications });
-
+        Application.find({user: req.user._id})
+           .populate("user", "name")
+           .populate({
+             path: 'job',
+             populate:{
+               path: 'user',
+               model: 'User'
+             }
+           })
+           .exec((err, applications)=>{
+             if(err){
+               next(err);
+      } else {
+        res.render('dashboard', { pictures, user: req.user, job: jobs, applications: applications });
       }
     });
+}
+});
 }
 });
 });
